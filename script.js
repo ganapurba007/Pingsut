@@ -13,7 +13,33 @@ function getHasil(komp, player){
 }
 
 
-const pGajah = document.querySelector('.gajah');
-pGajah.addEventListener('click', function(){
-	alert('ok');
+// const pGajah = document.querySelector('.gajah');
+// pGajah.addEventListener('click', function(){
+// 	const pilihanKomputer = getPilihanKomputer();
+// 	const pilihanPlayer = pGajah.className;
+// 	const hasil = getHasil(pilihanKomputer,pilihanPlayer);
+
+
+// 	const imgKomputer = document.querySelector('.img-komputer');
+// 	imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
+
+// 	const info = document.querySelector('.info');
+// 	info.innerHTML = hasil;
+// });
+
+
+const pilihan = document.querySelectorAll('li img');
+pilihan.forEach(function(pil){
+	pil.addEventListener('click', function(){
+		const pilihanKomputer = getPilihanKomputer();
+		const pilihanPlayer = pil.className;
+		const hasil = getHasil(pilihanKomputer,pilihanPlayer);
+
+
+		const imgKomputer = document.querySelector('.img-komputer');
+		imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
+
+		const info = document.querySelector('.info');
+		info.innerHTML = hasil;
+	});
 });
