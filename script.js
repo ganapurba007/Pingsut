@@ -13,20 +13,20 @@ function getHasil(komp, player){
 }
 
 
-// const pGajah = document.querySelector('.gajah');
-// pGajah.addEventListener('click', function(){
-// 	const pilihanKomputer = getPilihanKomputer();
-// 	const pilihanPlayer = pGajah.className;
-// 	const hasil = getHasil(pilihanKomputer,pilihanPlayer);
-
-
-// 	const imgKomputer = document.querySelector('.img-komputer');
-// 	imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
-
-// 	const info = document.querySelector('.info');
-// 	info.innerHTML = hasil;
-// });
-
+function putar(){
+	const imgKomputer = document.querySelector('.img-komputer');
+	const gambar = ['gajah', 'orang', 'semut'];
+	let i = 0
+	const waktuMulai = new Date().getTime()
+	setInterval(function(){
+		if(new Date().getTime() - waktuMulai > 1000){
+			clearInterval;
+			return;
+		}
+		imgKomputer.setAttribute('src', 'img/' + gambar[i++] + '.png');
+		if(i == gambar.length) i = 0;
+	}, 100)
+}
 
 const pilihan = document.querySelectorAll('li img');
 pilihan.forEach(function(pil){
@@ -35,11 +35,15 @@ pilihan.forEach(function(pil){
 		const pilihanPlayer = pil.className;
 		const hasil = getHasil(pilihanKomputer,pilihanPlayer);
 
+		putar();
 
-		const imgKomputer = document.querySelector('.img-komputer');
-		imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
+		setTimeout(function(){
+			const imgKomputer = document.querySelector('.img-komputer');
+			imgKomputer.setAttribute('src', 'img/' + pilihanKomputer + '.png');
 
-		const info = document.querySelector('.info');
-		info.innerHTML = hasil;
+			const info = document.querySelector('.info');
+			info.innerHTML = hasil;
+		},1000)
 	});
 });
+
